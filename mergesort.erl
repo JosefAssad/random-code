@@ -1,3 +1,5 @@
+%% Copyright Josef Assad 2011
+
 -module(mergesort).
 -export([mergesort/1]).
 
