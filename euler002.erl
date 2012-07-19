@@ -1,5 +1,5 @@
--module('euler-002').
--export([fib/2]).
+-module(euler002).
+-export([fib/2, euler002/0]).
 
 fib(num_items, N) ->
     fib_num_items(N, 1, [1, 1]);
@@ -18,3 +18,6 @@ fib_num_items(N, Counter, List) ->
     [Head1 | Tail] = List,
     [Head2 | _]    = Tail,
     fib_num_items(N, Counter+1, [Head1+Head2 | List]).
+ 
+euler002() ->
+    lists:sum([X || X  <- fib(max_item, 4000000),  X rem 2 =:= 0]).
