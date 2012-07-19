@@ -1,23 +1,11 @@
 -module(euler002).
--export([fib/2, euler002/0]).
-
-fib(num_items, N) ->
-    fib_num_items(N, 1, [1, 1]);
-fib(max_item, M) ->
-    fib_max_item(M, 1, [1]).
+-export([euler002/0]).
 
 fib_max_item(Max, ItemToBeAdded, List) when ItemToBeAdded > Max ->
     lists:reverse(List);
 fib_max_item(Max, ItemToBeAdded, List) ->
     [Head | _] = List,
     fib_max_item(Max, ItemToBeAdded+Head, [ItemToBeAdded | List]).
-
-fib_num_items(N, N, List) ->
-    lists:reverse(List);
-fib_num_items(N, Counter, List) ->
-    [Head1 | Tail] = List,
-    [Head2 | _]    = Tail,
-    fib_num_items(N, Counter+1, [Head1+Head2 | List]).
  
 euler002() ->
-    lists:sum([X || X  <- fib(max_item, 4000000),  X rem 2 =:= 0]).
+    lists:sum([X || X  <- fib_max_item(4000000, 1, [1]),  X rem 2 =:= 0]).
